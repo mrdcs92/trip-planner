@@ -1,0 +1,50 @@
+﻿<div>
+    <div id="backButton"><a href="#!/" class="btn btn-sm btn-info"><i class="fa fa-angle-left"></i> Back</a></div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h2>{{vm.selectedTrip.name}}, {{vm.selectedTrip.tripDate | date:'MM/dd/yyyy'}}</h2>
+            <div class="noStored text-muted" ng-show="vm.stops.length == 0 && !vm.errorMessage">No stops stored! Start here to add stops.</div>
+
+            <form novalidate name="newStopForm" ng-submit="vm.addStop()">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input class="form-control" id="stopDate" name="stopDate" ng-model="vm.newStop.stopDate" placeholder="MM/DD/YYYY" required ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/"/>
+                    <span class="text-muted" ng-show="newStopForm.stopDate.$error.required">Required</span>
+                    <span class="text-muted" ng-show="newStopForm.stopDate.$error.pattern">Must be in format of MM/DD/YYYY.</span>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input class="form-control" id="name" name="name" ng-model="vm.newStop.name" required ng-minlength="5"/>
+                    <span class="text-muted" ng-show="newStopForm.name.$error.required">Required</span>
+                    <span class="text-muted" ng-show="newStopForm.name.$error.minlength">Must be 5 characters or more</span>
+                </div>
+                <div>
+                    <input type="submit" value="Add" class="btn btn-success" ng-disabled="newStopForm.$invalid"/>
+                </div>
+            </form>
+
+            <wait-cursor display-when="vm.isBusy"></wait-cursor>
+            <div id="errorMessage" class="alert alert-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+            <table id="stopsTable" class="table table-striped">
+                <tr>
+                    <th>Location</th>
+                    <th>Arrival</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="stop in vm.stops">
+                    <td>{{stop.name}}</td>
+                    <td>{{stop.stopDate}}</td>
+                    <td><a class="btn btn-sm btn-danger" ng-click="vm.deleteStop(stop.id)"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-8">
+            <h2>The Map</h2>
+            <div id="map"></div>
+        </div>
+    </div>
+
+</div>
