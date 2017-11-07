@@ -47,6 +47,10 @@ body {
     margin-top: 1rem;
 }
 
+.table td {
+    vertical-align: middle;
+}
+
 .contain {
     height: 100%;
     margin-top: 100px;
@@ -57,9 +61,17 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #efefef;
+    background-color: #343a40;
+    color: rgba(255,255,255,.5);
     text-align: center;
+    float: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+    .footer a {
+        color: #fff;
+    }
 
 #map {
     width: 100%;

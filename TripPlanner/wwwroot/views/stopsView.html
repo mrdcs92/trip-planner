@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <input class="form-control" id="name" name="name" ng-model="vm.newStop.name" required ng-minlength="5"/>
+                    <input class="form-control" id="name" name="name" ng-model="vm.newStop.name" placeholder="e.g. Los Angeles, CA" required ng-minlength="5"/>
                     <span class="text-muted" ng-show="newStopForm.name.$error.required">Required</span>
                     <span class="text-muted" ng-show="newStopForm.name.$error.minlength">Must be 5 characters or more</span>
                 </div>
