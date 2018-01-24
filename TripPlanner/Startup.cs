@@ -41,7 +41,7 @@ namespace TripPlanner
             }
             else
             {
-                // Implement a real Mail Service
+                services.AddScoped<IMailService, DebugMailService>();
             }
 
             
